@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
+@layer components {
+  .titleText {
+    @apply text-lg font-medium text-slate-900;
+  }
+  strong {
+    @apply text-slate-800 text-sm font-semibold;
+  }
+  .country-card-container:hover {
+    @apply cursor-pointer hover:scale-105 transition duration-150 ease-out hover:ease-in;
+  }
+  .country-card-subtitle {
+    @apply text-sm text-slate-500;
+  }
+}
 @tailwind utilities;

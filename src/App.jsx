@@ -1,5 +1,13 @@
+import { Header, Countries } from "./components";
+
 function App() {
-  return <div className="bg-red-500">Hello</div>;
+  return (
+    <main className="">
+      <Header />
+
+      <Countries />
+    </main>
+  );
 }
 
 export default App;
