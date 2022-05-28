@@ -96,6 +96,9 @@
   .spans {
     @apply flex justify-start items-center gap-2;
   }
+  .spans-footer {
+    @apply space-y-2 lg:flex lg:space-y-0 gap-2 justify-start items-center;
+  }
   strong {
     @apply text-sm tracking-wide;
   }

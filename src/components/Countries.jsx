@@ -51,10 +51,9 @@ const Countries = () => {
   }, []);
 
   return (
-    <>
+    <section className="min-h-screen pb-10">
       <Header />
-
-      <section className="min-h-screen px-10 mt-20">
+      <div className="px-10 mt-20 ">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center my-10">
           <SearchCountry setSearch={setSearch} />
           <SearchByRegion setSearch={setSearch} />
@@ -113,8 +112,8 @@ const Countries = () => {
                 ))
             : "No results found"}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

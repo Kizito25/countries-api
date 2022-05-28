@@ -47,9 +47,9 @@ const Country = () => {
       });
   }, [code]);
   return (
-    <div className="bodyColor">
+    <section className="min-h-screen bodyColor pb-10">
       <Header />
-      <section className="min-h-screen px-10 mb-10 lg:my-20">
+      <div className="px-10 mb-10 lg:my-20">
         <div className="my-10 lg:my-20">
           <button
             className="flex items-center gap-2 rounded-sm py-2 px-4 shadow-sm buttonColor"
@@ -88,7 +88,7 @@ const Country = () => {
               <article className="w-full lg:w-1/2 flex flex-col gap-10">
                 <h2 className="map-title">{country.name.common}</h2>
                 <div className="flex flex-col lg:flex-row justify-between items-start map-details">
-                  <div className="space-y-2">
+                  <div className="space-y-2 mb-10 lg:mb-0">
                     <div className="spans">
                       <strong>Native name:</strong>
                       <span className="spans">
@@ -112,7 +112,7 @@ const Country = () => {
                       <strong>Capital:</strong> <span>{country.capital}</span>
                     </div>
                   </div>
-                  <div className="space-y-2 mt-2 lg:mt-0">
+                  <div className="space-y-2 mt-10 lg:mt-0">
                     <div className="spans">
                       <strong>Top Level Domain:</strong>{" "}
                       <span>{country.tld}</span>
@@ -137,9 +137,9 @@ const Country = () => {
                     </div>
                   </div>
                 </div>
-                <div className="spans">
+                <div className="spans-footer">
                   <strong>Border Countries:</strong>{" "}
-                  <span className="spans">
+                  <div className="spans">
                     {borderCountries &&
                       borderCountries.map((border, index) => (
                         <a
@@ -150,13 +150,13 @@ const Country = () => {
                           {border.name.common}
                         </a>
                       ))}
-                  </span>
+                  </div>
                 </div>
               </article>
             </div>
           ))}
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
