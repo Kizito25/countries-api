@@ -102,5 +102,11 @@
   .btn {
     @apply flex justify-start items-center gap-1 text-sm lg:text-xl;
   }
+  .formLabel {
+    @apply flex justify-around items-center gap-1;
+  }
+  .label {
+    @apply text-sm text-slate-700 dark:text-slate-400;
+  }
 }
 @tailwind utilities;
