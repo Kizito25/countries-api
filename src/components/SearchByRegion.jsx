@@ -25,14 +25,12 @@ const SearchByRegion = ({ setSearch }) => {
         {({ open }) => (
           <>
             <div className="mt-1 relative">
-              <Listbox.Button className="text-slate-800 py-7 px-8 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 w-full">
-                <span className="absolute inset-y-0 w-full flex justify-around lg:-ml-8 items-center pointer-events-none formLabel">
-                  <strong className="label -ml-28 lg:ml-0">
-                    Search By Region
-                  </strong>
+              <Listbox.Button className="text-slate-800 py-4 px-6 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 w-full">
+                <span className="inset-y-0 w-full flex justify-between items-center pointer-events-none formLabel">
+                  <strong className="label lg:ml-0">Search By Region</strong>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 -mr-14 lg:mr-0"
+                    className="h-4 w-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
