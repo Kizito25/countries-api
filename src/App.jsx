@@ -1,10 +1,8 @@
-import { Header, Countries } from "./components";
+import { Countries } from "./components";
 
 function App() {
   return (
     <main className="">
-      <Header />
-
       <Countries />
     </main>
   );

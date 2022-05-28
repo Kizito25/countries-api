@@ -1,66 +1,109 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { SearchCountry, SearchByRegion, Header } from "../components";
+import { DotWave } from "@uiball/loaders";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  // const [country, setCountry] = useState('')
+  const [region, setRegion] = useState([]);
+
+  const filterCountryOrCapital = (country, key) => {
+    let searchByCountry;
+    let searchByCapital;
+    let searchByRegion;
+    for (let i = 0; i < countries.length; i++) {
+      if (!country.capital) {
+        return;
+      } else {
+        searchByCountry = country.name.common.toLowerCase().includes(key);
+        searchByCapital = country.capital
+          .toString()
+          .toLowerCase()
+          .includes(key);
+        searchByRegion = country.region.toLowerCase() == key.toLowerCase();
+      }
+    }
+    return searchByCountry || searchByCapital || searchByRegion;
+  };
 
   useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
       .then((response) => {
-        console.log(response.data);
         setCountries(response.data);
+        setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        setLoading(false);
       });
   }, []);
+
   return (
-    <section className="min-h-screen bg-slate-50 px-10 mt-20">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-10">
-        {countries &&
-          countries.map((country, countryIndex) => (
-            <div
-              key={countryIndex}
-              className="bg-slate-50 rounded-lg m-2 country-card-container"
-            >
-              <img
-                src={country.flags.svg}
-                alt={country.name.common}
-                className="h-40 w-full object-cover rounded-t-lg country-card-image"
-              />
-              <div className="flex flex-col p-4 shadow-lg shadow-slate-500/20 rounded-b-lg country-card-details">
-                <h3 className="titleText">{country.name.common}</h3>
-                <div className="mt-4 country-card-footer">
-                  <p>
-                    <strong>Population</strong>:{" "}
-                    <span className="country-card-subtitle">
-                      {country.population}
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Region</strong>:{" "}
-                    <span className="country-card-subtitle">
-                      {country.region}
-                    </span>
-                  </p>
-                  <p>
-                    <strong>Capital</strong>:
-                    <span className="country-card-subtitle">
-                      {country.name.common ===
-                      "Heard Island and McDonald Islands"
-                        ? (country.capital = "none")
-                        : country.capital}
-                    </span>
-                  </p>
-                </div>
-              </div>
+    <>
+      <Header />
+
+      <section className="min-h-screen px-10 mt-20">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center my-10">
+          <SearchCountry setSearch={setSearch} />
+          <SearchByRegion setSearch={setSearch} />
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-10">
+          {loading && (
+            <div className="flex justify-center items-center space-y-4 h-40 max-h-72 text-center">
+              <DotWave size={47} speed={1} color="black" />
             </div>
-          ))}
-      </div>
-    </section>
+          )}
+          {countries
+            ? countries
+                .filter((country) => {
+                  return filterCountryOrCapital(country, search);
+                })
+                .map((country, countryIndex) => (
+                  <div
+                    key={countryIndex}
+                    className="bg-slate-50 rounded-lg m-2 country-card-container shadow-lg shadow-slate-500/20"
+                  >
+                    <img
+                      src={country.flags.svg}
+                      alt={country.name.common}
+                      className="h-40 w-full object-cover rounded-t-lg country-card-image"
+                    />
+                    <div className="flex flex-col p-4  rounded-b-lg country-card-details">
+                      <a href={`/${country.name.common}`} className="">
+                        <h3 className="titleText">{country.name.common}</h3>
+                      </a>
+                      <div className="mt-4 country-card-footer">
+                        <p>
+                          <strong>Population</strong>:{" "}
+                          <span className="country-card-subtitle">
+                            {country.population}
+                          </span>
+                        </p>
+                        <p>
+                          <strong>Region</strong>:{" "}
+                          <span className="country-card-subtitle">
+                            {country.region}
+                          </span>
+                        </p>
+                        <p>
+                          <strong>Capital</strong>:
+                          <span className="country-card-subtitle">
+                            {country.name.common ===
+                            "Heard Island and McDonald Islands"
+                              ? (country.capital = "none")
+                              : country.capital}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+            : "No results found"}
+        </div>
+      </section>
+    </>
   );
 };
 
