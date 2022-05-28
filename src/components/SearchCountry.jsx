@@ -17,12 +17,14 @@ const SearchCountry = ({ setSearch }) => {
   }, []);
 
   return (
-    <div className="w-full lg:w-2/6 my-10">
+    <div className="w-full lg:w-2/6 my-10 inputColor">
       <Input
         lg
         full
         loading={isLoading.search}
         before={<Icon name="search" />}
+        color="currentColor"
+        // className="inputColor"
         placeholder="Search for a country"
         onChange={(e) => {
           setLoading({ ...isLoading, search: !isLoading.search });

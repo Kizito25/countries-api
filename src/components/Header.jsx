@@ -1,4 +1,5 @@
 import React from "react";
+import useDarkMode from "../hooks/useDarkMode";
 
 const Moon = () => {
   return (
@@ -38,16 +39,13 @@ const Sun = () => {
 };
 
 const Header = () => {
-  const toggleDarkMode = () => {
-    document.body.classList.toggle("bg-dark");
-    alert("Dark Mode Button");
-  };
+  let [colorTheme, setTheme] = useDarkMode();
 
   return (
-    <nav className="bg-slate-50 shadow-sm shadow-slate-500/20 h-20 flex justify-between items-center px-10">
+    <nav className="shadow-sm h-20 flex justify-between items-center px-10 navColor">
       <h2 className="text-2xl font-bold">Where in the world?</h2>
-      <button onClick={() => toggleDarkMode()} className="btn">
-        <Moon />
+      <button onClick={() => setTheme(colorTheme)} className="btn">
+        {colorTheme === "light" ? <Sun /> : <Moon />}
         <span className="spans">Dark Mode</span>
       </button>
     </nav>

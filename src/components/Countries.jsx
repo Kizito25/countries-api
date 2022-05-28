@@ -62,7 +62,7 @@ const Countries = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-10">
           {loading && (
             <div className="flex justify-center items-center space-y-4 h-40 max-h-72 text-center">
-              <DotWave size={47} speed={1} color="black" />
+              <DotWave size={47} speed={1} color="currentColor" />
             </div>
           )}
           {error && <Error error={error} />}
@@ -74,18 +74,18 @@ const Countries = () => {
                 .map((country, countryIndex) => (
                   <div
                     key={countryIndex}
-                    className="bg-slate-50 rounded-lg m-2 country-card-container shadow-lg shadow-slate-500/20"
+                    className="rounded-lg m-2 country-card-container shadow-lg mapColor"
                   >
                     <img
                       src={country.flags.svg}
                       alt={country.name.common}
-                      className="h-40 w-full object-cover rounded-t-lg country-card-image"
+                      className="h-40 w-full object-cover rounded-t-lg "
                     />
-                    <div className="flex flex-col p-4  rounded-b-lg country-card-details">
+                    <div className="flex flex-col p-4 rounded-b-lg mapFooter">
                       <a href={`/${country.name.common}`} className="">
                         <h3 className="titleText">{country.name.common}</h3>
                       </a>
-                      <div className="mt-4 country-card-footer">
+                      <div className="mt-4">
                         <p>
                           <strong>Population</strong>:{" "}
                           <span className="country-card-subtitle">

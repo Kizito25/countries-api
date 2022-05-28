@@ -2,7 +2,7 @@ import { Countries } from "./components";
 
 function App() {
   return (
-    <main className="">
+    <main className="bodyColor">
       <Countries />
     </main>
   );

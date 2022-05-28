@@ -47,12 +47,12 @@ const Country = () => {
       });
   }, [code]);
   return (
-    <>
+    <div className="bodyColor">
       <Header />
       <section className="min-h-screen px-10 mb-10 lg:my-20">
         <div className="my-10 lg:my-20">
           <button
-            className="flex items-center gap-2 bg-white rounded-sm py-2 px-4 shadow-sm"
+            className="flex items-center gap-2 rounded-sm py-2 px-4 shadow-sm buttonColor"
             onClick={handlePrevious}
           >
             <span>
@@ -143,7 +143,7 @@ const Country = () => {
                     {borderCountries &&
                       borderCountries.map((border, index) => (
                         <a
-                          className="shadow-md bg-white py-2 px-3 rounded-md text-xs"
+                          className="shadow-md buttonColor py-2 px-3 rounded-md text-xs"
                           key={index}
                           href={`../${border.name.common}`}
                         >
@@ -156,7 +156,7 @@ const Country = () => {
             </div>
           ))}
       </section>
-    </>
+    </div>
   );
 };
 
