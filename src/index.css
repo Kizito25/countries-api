@@ -81,5 +81,8 @@
   strong {
     @apply text-sm tracking-wide;
   }
+  .btn {
+    @apply flex justify-start items-center gap-1 text-sm lg:text-xl;
+  }
 }
 @tailwind utilities;
