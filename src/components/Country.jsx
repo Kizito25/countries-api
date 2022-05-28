@@ -112,7 +112,7 @@ const Country = () => {
                       <strong>Capital:</strong> <span>{country.capital}</span>
                     </div>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 mt-2 lg:mt-0">
                     <div className="spans">
                       <strong>Top Level Domain:</strong>{" "}
                       <span>{country.tld}</span>
