@@ -66,5 +66,20 @@
   .country-card-subtitle {
     @apply text-sm text-slate-500;
   }
+  .map-details {
+    @apply text-xs tracking-wide;
+  }
+  .map-span {
+    @apply mb-3;
+  }
+  .map-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold;
+  }
+  .spans {
+    @apply flex justify-start items-center gap-2;
+  }
+  strong {
+    @apply text-sm tracking-wide;
+  }
 }
 @tailwind utilities;

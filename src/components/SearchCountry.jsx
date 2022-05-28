@@ -9,9 +9,7 @@ const SearchCountry = ({ setSearch }) => {
   });
 
   const handleSearch = useCallback(async (e) => {
-    setLoading({ ...isLoading, search: true });
     await setSearch(e.toLowerCase());
-    setLoading({ ...isLoading, search: false });
   });
 
   useEffect(() => {

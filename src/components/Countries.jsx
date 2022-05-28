@@ -3,11 +3,20 @@ import axios from "axios";
 import { SearchCountry, SearchByRegion, Header } from "../components";
 import { DotWave } from "@uiball/loaders";
 
+const Error = ({ error }) => {
+  return (
+    <div className="flex justify-center items-center">
+      <h2>{error}</h2>
+    </div>
+  );
+};
+
 const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState([]);
+  const [error, setError] = useState("");
 
   const filterCountryOrCapital = (country, key) => {
     let searchByCountry;
@@ -37,6 +46,7 @@ const Countries = () => {
       })
       .catch((error) => {
         setLoading(false);
+        setError(error);
       });
   }, []);
 
@@ -55,6 +65,7 @@ const Countries = () => {
               <DotWave size={47} speed={1} color="black" />
             </div>
           )}
+          {error && <Error error={error} />}
           {countries
             ? countries
                 .filter((country) => {
