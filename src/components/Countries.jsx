@@ -85,20 +85,20 @@ const Countries = () => {
                         <h3 className="titleText">{country.name.common}</h3>
                       </a>
                       <div className="mt-4">
-                        <p>
-                          <strong>Population</strong>:{" "}
+                        <p className="flex items-center gap-2">
+                          <strong>Population:</strong>
                           <span className="country-card-subtitle">
                             {country.population}
                           </span>
                         </p>
-                        <p>
-                          <strong>Region</strong>:{" "}
+                        <p className="flex items-center gap-2">
+                          <strong>Region:</strong>
                           <span className="country-card-subtitle">
                             {country.region}
                           </span>
                         </p>
-                        <p>
-                          <strong>Capital</strong>:
+                        <p className="flex items-center gap-2">
+                          <strong>Capital:</strong>
                           <span className="country-card-subtitle">
                             {country.name.common ===
                             "Heard Island and McDonald Islands"
