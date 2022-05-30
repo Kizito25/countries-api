@@ -22,7 +22,7 @@ const SearchByRegion = ({ setSearch }) => {
         {({ open }) => (
           <>
             <div className="mt-1 relative">
-              <Listbox.Button className="text-slate-800 py-4 px-6 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 w-full">
+              <Listbox.Button className="text-slate-800 py-4 px-6 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 focus:outline-none focus:border-1 w-full">
                 <span className="inset-y-0 w-full flex justify-between items-center pointer-events-none formLabel">
                   {currentRegion ? (
                     currentRegion
@@ -53,14 +53,16 @@ const SearchByRegion = ({ setSearch }) => {
                 leaveFrom="opacity-200"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="currentColor absolute z-10 mt-1 text-slate-800 py-4 px-6 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 w-full">
+                <Listbox.Options className="currentColor absolute z-10 mt-1 text-slate-800 py-4 px rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 focus:border-1 focus:outline-none w-full">
                   {regions.map((region, index) => (
                     <Listbox.Option
                       key={index}
                       className={({ active }) =>
                         classNames(
-                          active ? "text-slate-200" : "text-slate-500",
-                          "cursor-default select-none relative py-2 pl-3 pr-9"
+                          active
+                            ? "text-slate-500 dark:text-slate-200"
+                            : "text-slate-500",
+                          "relative py-2 pl-3"
                         )
                       }
                       value={region}
@@ -85,7 +87,7 @@ const SearchByRegion = ({ setSearch }) => {
                     className={({ active }) =>
                       classNames(
                         active ? "text-slate-200" : "text-slate-500",
-                        "cursor-default select-none relative py-2 pl-3 pr-9"
+                        "select-none relative py-2 pl-3"
                       )
                     }
                     value=""
