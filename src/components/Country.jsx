@@ -20,6 +20,8 @@ const Country = () => {
   const [borderCountries, setBorderCountries] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  let alpha = "alpha";
+  let name = "name";
 
   const handlePrevious = () => {
     navigate("/");
@@ -27,7 +29,7 @@ const Country = () => {
 
   useEffect(() => {
     axios
-      .get(`https://restcountries.com/v3.1/name/${country}?fullText=true`)
+      .get(`https://restcountries.com/v3.1/${alpha}/${country}`)
       .then(({ data }) => {
         setCurrentCountry(data);
         setCode(data.map((a) => a.borders));
@@ -154,7 +156,7 @@ const Country = () => {
                         <a
                           className="shadow-md buttonColor py-2 px-3 rounded-md text-xs"
                           key={index}
-                          href={`../${border.name.common}`}
+                          href={`./${border.cca3}`}
                         >
                           {border.name.common}
                         </a>

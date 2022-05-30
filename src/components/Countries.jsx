@@ -81,7 +81,7 @@ const Countries = () => {
                     className="h-40 w-full object-cover rounded-t-lg "
                   />
                   <div className="flex flex-col p-4 rounded-b-lg mapFooter">
-                    <a href={`/${country.name.common}`} className="">
+                    <a href={`/${country.cca3}`} className="">
                       <h3 className="titleText">{country.name.common}</h3>
                     </a>
                     <div className="mt-4">

@@ -94,7 +94,7 @@
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold;
   }
   .spans {
-    @apply flex justify-start items-center gap-2;
+    @apply flex flex-wrap justify-start items-center gap-2;
   }
   .spans-footer {
     @apply space-y-2 lg:flex lg:space-y-0 gap-2 justify-start items-center;
