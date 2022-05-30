@@ -21,7 +21,6 @@ const Country = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   let alpha = "alpha";
-  let name = "name";
 
   const handlePrevious = () => {
     navigate("/");
