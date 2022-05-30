@@ -23,7 +23,7 @@ const SearchByRegion = ({ setSearch }) => {
           <>
             <div className="mt-1 relative">
               <Listbox.Button className="text-slate-800 py-4 px-6 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 focus:outline-none focus:border-1 w-full">
-                <span className="inset-y-0 w-full flex justify-between items-center pointer-events-none formLabel">
+                <div className="inset-y-0 w-full flex justify-between items-center pointer-events-none formLabel">
                   {currentRegion ? (
                     currentRegion
                   ) : (
@@ -43,7 +43,7 @@ const SearchByRegion = ({ setSearch }) => {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                </span>
+                </div>
               </Listbox.Button>
 
               <Transition

@@ -45,7 +45,7 @@ const Header = () => {
       <h1 className="text-2xl font-bold">Where in the world?</h1>
       <button onClick={() => setTheme(colorTheme)} className="btn">
         {colorTheme === "light" ? <Sun /> : <Moon />}
-        <span className="spans">Dark Mode</span>
+        <span className="spans font-light text-base">Dark Mode</span>
       </button>
     </nav>
   );
