@@ -1,4 +1,3 @@
-import React from "react";
 import useDarkMode from "../hooks/useDarkMode";
 
 const Moon = () => {
@@ -43,7 +42,7 @@ const Header = () => {
 
   return (
     <nav className="shadow-sm h-20 flex justify-between items-center px-10 navColor">
-      <h2 className="text-2xl font-bold">Where in the world?</h2>
+      <h1 className="text-2xl font-bold">Where in the world?</h1>
       <button onClick={() => setTheme(colorTheme)} className="btn">
         {colorTheme === "light" ? <Sun /> : <Moon />}
         <span className="spans">Dark Mode</span>

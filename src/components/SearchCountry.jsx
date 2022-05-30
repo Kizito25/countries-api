@@ -1,16 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
-import { Input, Icon } from "elementz";
+import { useEffect, useCallback } from "react";
 
-const SearchCountry = ({ setSearch }) => {
-  const [isLoading, setLoading] = useState({
-    search: false,
-    edit: false,
-    custom: false,
-  });
-
-  const handleSearch = useCallback(async (e) => {
-    await setSearch(e.toLowerCase());
-  });
+const SearchCountry = ({ search, setSearch }) => {
+  const handleSearch = useCallback(
+    async (e) => {
+      try {
+        return await setSearch(e.toLowerCase());
+      } catch (err) {
+        return;
+      }
+    },
+    [search]
+  );
 
   useEffect(() => {
     handleSearch();
@@ -40,10 +40,9 @@ const SearchCountry = ({ setSearch }) => {
           </div>
           <input
             type="text"
-            className="text-slate-800 py-4 px-8 lg:px-10 rounded-sm bg-slate-50 dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 w-full"
+            className="text-slate-800 py-4 px-8 lg:px-10 rounded-sm dark:bg-slate-800 border dark:border-slate-500 dark:text-slate-500 w-full inputColor"
             placeholder="Search for a country"
             onChange={(e) => {
-              setLoading({ ...isLoading, search: !isLoading.search });
               handleSearch(e.target.value);
             }}
           />{" "}

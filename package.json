@@ -12,7 +12,6 @@
     "@uiball/loaders": "^1.2.6",
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
-    "elementz": "^2.0.5",
     "install": "^0.13.0",
     "postcss": "^8.4.14",
     "react": "^18.0.0",

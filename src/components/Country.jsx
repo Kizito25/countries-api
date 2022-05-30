@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { DotWave } from "@uiball/loaders";
 import axios from "axios";
 import { Header } from "../components";
 
@@ -18,6 +19,8 @@ const Country = () => {
   const [code, setCode] = useState([]);
   const [borderCountries, setBorderCountries] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+
   const handlePrevious = () => {
     navigate("/");
   };
@@ -28,9 +31,11 @@ const Country = () => {
       .then(({ data }) => {
         setCurrentCountry(data);
         setCode(data.map((a) => a.borders));
+        setLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
+        setLoading(false);
+        return setError(err.message);
       });
   }, []);
 
@@ -38,19 +43,17 @@ const Country = () => {
     axios
       .get(`https://restcountries.com/v3.1/alpha?codes=${code}`)
       .then(({ data }) => {
-        console.log("Data", data);
-        console.log("Code", code);
-        setBorderCountries(data);
+        return setBorderCountries(data);
       })
       .catch((err) => {
-        console.log(err);
+        return setError(err.message);
       });
   }, [code]);
   return (
     <section className="min-h-screen bodyColor pb-10">
       <Header />
-      <div className="px-10 mb-10 lg:my-20">
-        <div className="my-10 lg:my-20">
+      <div className="px-10 mb-10 lg:my-5">
+        <div className="my-10">
           <button
             className="flex items-center gap-2 rounded-sm py-2 px-4 shadow-sm buttonColor"
             onClick={handlePrevious}
@@ -74,8 +77,14 @@ const Country = () => {
             <span>Back</span>
           </button>
         </div>
-        {error && <Error error={error} />}
-        {currentCountry &&
+        {loading && (
+          <div className="flex justify-center items-center space-y-4 h-40 max-h-72 text-center">
+            <DotWave size={47} speed={1} color="currentColor" />
+          </div>
+        )}
+        {!currentCountry ? (
+          <Error error={error} />
+        ) : (
           currentCountry.map((country) => (
             <div className="flex flex-col lg:flex-row justify-center items-center gap-10">
               <div className="w-full lg:w-1/2">
@@ -154,7 +163,8 @@ const Country = () => {
                 </div>
               </article>
             </div>
-          ))}
+          ))
+        )}
       </div>
     </section>
   );

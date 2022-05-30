@@ -55,7 +55,7 @@
 @tailwind components;
 @layer components {
   .navColor {
-    @apply bg-slate-50 dark:bg-slate-800 shadow-sm shadow-slate-500/20 dark:shadow-slate-600/50 text-slate-900 dark:text-slate-100;
+    @apply bg-white dark:bg-slate-800 shadow-sm shadow-slate-500/20 dark:shadow-slate-600/50 text-slate-900 dark:text-slate-100;
   }
   .bodyColor {
     @apply bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 transition duration-500;
@@ -70,10 +70,10 @@
     @apply text-lg font-medium text-slate-800 dark:text-slate-100;
   }
   .buttonColor {
-    @apply text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-700;
+    @apply text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-700 shadow-md drop-shadow-sm;
   }
   .inputColor {
-    @apply text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-700;
+    @apply text-slate-800 dark:text-slate-100 bg-slate-50 dark:bg-slate-700 focus:outline-none;
   }
   strong {
     @apply text-slate-800 dark:text-slate-100 text-sm font-semibold;
